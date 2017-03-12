@@ -15,7 +15,6 @@ var rule;
 function setup() {
     createCanvas(900, 600);
     background(backgroundColor);
-    translate(width / 2, height / 2);
     stroke(strokeColor);
     strokeWeight(0.1);
     initLetters();
