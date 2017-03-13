@@ -1,7 +1,7 @@
 "use strict";
 
-var DEF_WIDTH = 1000;
-var DEF_HEIGHT = 600;
+const DEF_WIDTH = 1000;
+const DEF_HEIGHT = 600;
 
 function getData() {
 	window.axiom = document.getElementById("axiom").value.split("");
