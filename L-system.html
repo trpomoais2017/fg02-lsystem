@@ -1,0 +1,28 @@
+<html>
+<body id="body">
+<body bgcolor="#c0c0c0">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF8">
+	<link rel="stylesheet" type="text/css" href="L-system.css" />
+	<canvas width="900" height="600"></canvas>
+	<div class="mainDiv">
+		<fieldset><legend>Входные данные</legend>
+			<div style = "float: left; height: 50px; width: 20%;"><input id="x" type="text" value="450" size="3">x</div>
+			<div style = "float: left; height: 50px; width: 20%;"><input id="y" type="text" value="300" size="3">y</div>
+			<div style = "float: left; height: 50px; width: 20%;"><input id="a" type="text" value="0" size="3">a</div>
+            <div class='rhs'><input id="axiom" type="text" value="[F]+[F]+[F]+[F]+[F]+[F]" size="10">axiom</div>
+			<div class='rhs'><input id="newF" type="text" value="F[+FF][-FF]FF[+F][-F]FF" size="10">newF</div>
+			<div class='rhs'><input id="n" type="text" value="2" size="10">n</div>
+			<div class='rhs'><input id="s" type="text" value="5" size="10">s</div>
+			<div class='rhs'><input id="q" type="text" value="60" size="10">q</div>
+			<form name="myForm">
+				<select name="language"> 
+				  <option value="#">Выберите фрактал</option>
+				  <option>Снежинка</option>
+				  <option>Куст</option>
+				</select>
+			</form>
+        </fieldset>
+	</div>
+	<script src="L-system.js"></script>
+</body>
+</html>
