@@ -1,0 +1,35 @@
+canvas {
+   border: 1px dashed black;
+}
+.mainDiv{
+	float: right;
+	margin-left: 0%;
+	margin-right: 3%;
+	width: 350px;
+	height: 1px;
+	padding: 10px;
+}
+a.ok {
+    border: 2px groove midnightblue;
+    text-decoration: blink;
+    color: black;
+  }
+.rhs {
+    float: left;
+	height: 30px;
+    width: 60%;
+}
+fieldset {
+    display: block;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 70px;
+    -webkit-padding-before: 1em;
+    -webkit-padding-start: 0.75em;
+    -webkit-padding-end: 0.75em;
+    -webkit-padding-after: 0.625em;
+    min-width: -webkit-min-content;
+    border-width: 5px;
+    border-style: groove;
+    border-color: threedface;
+    border-image: initial;
+}
