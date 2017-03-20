@@ -1,14 +1,11 @@
 var ctx = document.querySelector("canvas").getContext("2d");
 
-var newF, q, s, n;
-var stack = [];
-var axiom, str = "";
-var point = {x: 0, y: 0, a: 0};
-var teleport;
-var languagesSelect = myForm.language;
+var AXIOM, NEW_F, Q, S, N;
+var POINT = {x: 0, y: 0, a: 0};
+var LANGUAGES_SELECT = myForm.language;
 
 function Fractals(){
-	var selectedOption = languagesSelect.options[languagesSelect.selectedIndex];
+	var selectedOption = LANGUAGES_SELECT.options[LANGUAGES_SELECT.selectedIndex];
 	switch(selectedOption.text){
 		case "Куст":												
 			document.getElementById("axiom").value = "F";
@@ -34,63 +31,71 @@ function Fractals(){
 	Start();
 }
 function F(){
-	point.x -= s*Math.cos(-point.a*Math.PI/180);
-	point.y -= s*Math.sin(-point.a*Math.PI/180);
-	ctx.lineTo(point.x , point.y);
+	POINT.x -= S*Math.cos(-POINT.a*Math.PI/180);
+	POINT.y -= S*Math.sin(-POINT.a*Math.PI/180);
+	ctx.lineTo(POINT.x , POINT.y);
 }
-function Universal(){
-	for(var i=0; i<n; i++){
+function MakeNewF(){
+	let str = "";
+	for(var i=0; i<N; i++){
 		str = "";
-		for(var comandAxiom of axiom){
+		for(var comandAxiom of AXIOM){
 			if(comandAxiom == "F")
-				str += newF;
+				str += NEW_F;
 			else
 				str += comandAxiom;
 		}
-		axiom = str;
+		AXIOM = str;
 	}
-	newF = axiom;
-	
-	for(var comand of newF){
+	return AXIOM;
+}
+function DrawLSystem(){
+	let teleport;
+	let stack = [];
+	for(var comand of NEW_F){
 		switch(comand){
 			case 'F':
 				F();
 			break;
 			case '-':
-				point.a -= q;
+				POINT.a -= Q;
 			break;
 			case '+':
-				point.a += q;
+				POINT.a += Q;
 			break;
 			case '[':
-				stack.push({x: point.x, y: point.y, a: point.a});
+				stack.push({x: POINT.x, y: POINT.y, a: POINT.a});
 			break;
 			case ']':
 				teleport = stack.pop();
-				point.x = teleport.x;
-				point.y = teleport.y;
-				point.a = teleport.a;
-				ctx.moveTo(point.x, point.y);
+				POINT.x = teleport.x;
+				POINT.y = teleport.y;
+				POINT.a = teleport.a;
+				ctx.moveTo(POINT.x, POINT.y);
 			break;
 		}
 	}
 }
+function Universal(){
+	NEW_F = MakeNewF();
+	DrawLSystem();
+}
 function Start(){
 	ctx.clearRect(0, 0, document.querySelector("canvas").clientWidth, document.querySelector("canvas").clientHeight);
-	axiom = document.getElementById("axiom").value;
-	newF = document.getElementById("newF").value;
-	n = parseInt(document.getElementById("n").value);
-	s = parseFloat(document.getElementById("s").value);
-	q = parseFloat(document.getElementById("q").value);
-	point.x = parseFloat(document.getElementById("x").value);
-	point.y = parseFloat(document.getElementById("y").value);
-	point.a = parseFloat(document.getElementById("a").value);
+	AXIOM = document.getElementById("axiom").value;
+	NEW_F = document.getElementById("newF").value;
+	N = parseInt(document.getElementById("n").value);
+	S = parseFloat(document.getElementById("s").value);
+	Q = parseFloat(document.getElementById("q").value);
+	POINT.x = parseFloat(document.getElementById("x").value);
+	POINT.y = parseFloat(document.getElementById("y").value);
+	POINT.a = parseFloat(document.getElementById("a").value);
 	ctx.beginPath();
-	ctx.moveTo(point.x, point.y);
+	ctx.moveTo(POINT.x, POINT.y);
 	Universal();
 	ctx.stroke();
 }
 addEventListener("keydown", function(event) {
     if (event.code == "Enter")	Start();
  });
- languagesSelect.addEventListener("change", Fractals);
+ LANGUAGES_SELECT.addEventListener("change", Fractals);
