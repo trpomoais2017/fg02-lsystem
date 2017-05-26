@@ -5,7 +5,7 @@
 	<meta http-equiv="Cache-Control" content="no-cache"/>
 	
 	<script>
-		//пример рисования произвольного множества точек
+/*		//пример рисования произвольного множества точек
 		function example1() {
 			//получаем html-элемент типа canvas и его характеристики
 			var canvas = document.getElementById("canvas1");
@@ -99,12 +99,29 @@
 			example1();
 			example2();
 			example3();
-		}
+		}*/
+		var canvas = document.createElement('canvas'); 
+		canvas.style.position = 'fixed'; 
+		canvas.style.top = '0px'; 
+		canvas.style.left = '0px'; 
+		canvas.style.zIndex = '-10'; 
+		canvas.width = document.body.offsetWidth; 
+		canvas.height = window.innerHeight; 
+		document.body.insertBefore(canvas, document.body.firstChild);
+		let axiom = "";
+		let newF = "";
+		let n = 1;
+		//let pos = [0,0,0];
+		let s = 100;
+		let deg = Math.PI/180;
+		let q = 0;
+		
 	</script>
 
 <body onload="run()">
-  <canvas height='200' width='200' id='canvas1'></canvas>
+  <!--<canvas height='200' width='200' id='canvas1'></canvas>
   <canvas height='200' width='200' id='canvas2'></canvas>
-  <canvas height='200' width='200' id='canvas3'></canvas>
+  <canvas height='200' width='200' id='canvas3'></canvas>-->
+
 </body>
 </html>
