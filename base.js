@@ -3,30 +3,15 @@ var canvas = document.getElementById("canvas1");
 var canvasHeight = parseInt(canvas.getAttribute("height"));
 var canvasWidth = parseInt(canvas.getAttribute("width"));
 var context = canvas.getContext('2d');
-var Transform = function (str, rulOf, rulTo, n) {
+var transform = function (str, rulOf, rulTo, n) 
+{
 	var retStr = "";
 	for (n; n > 0; n--) {
 		var j = 0;
 		retStr = "";
 		for (var i = 0; i < str.length; i++) {
-			if (str[i] == rulOf[0]) {
-				var eq = true;
-				j = i;
-				for (i; i - j < rulOf.length; i++) {
-					if (str[i] != rulOf[i - j]) {
-						eq = false;
-						break;
-					}
-				}
-				if (eq) {
+			if (str[i] == rulOf) {
 					retStr += rulTo;
-					i = j + rulOf.length - 1;
-
-				}
-				else {
-					i = j;
-					retStr += str[i];
-				}
 			}
 			else
 				retStr += str[i];
@@ -35,7 +20,8 @@ var Transform = function (str, rulOf, rulTo, n) {
 	}
 	return retStr;
 }
-var Print = function (str, x, y, s, q) 
+
+var print = function (str, x, y, s, q) 
 {
 
 	context.lineWidth = "2";
@@ -88,12 +74,12 @@ var Print = function (str, x, y, s, q)
 	context.stroke();
 	context.restore();
 }
-function Run() 
-{
-	Print(Transform("[F]+[F]+[F]+[F]+[F]+[F]", "F", "F[+FF][-FF]FF[+F][-F]FF", 4), 1000, 1000, 1, 60);
+
+function run() {
+	print(transform("[F]+[F]+[F]+[F]+[F]+[F]", "F", "F[+FF][-FF]FF[+F][-F]FF", 4), 1000, 1000, 1, 60);
 }
 
-function Qcheck(q) 
+function qcheck(q) 
 {
 	var piFound = false;
 	for (var i = 0; i < q.length; i++) {
@@ -155,7 +141,7 @@ function lsystem()
 	if (!isNaN(parseInt(document.getElementById("inputS").value)))
 		s = Math.abs(parseInt(document.getElementById("inputS").value));
 	q = document.getElementById("inputQ").value;
-	q = Qcheck(q);
+	q = qcheck(q);
 	axiom = document.getElementById("inputAxiom").value;
 	ofWhat = document.getElementById("inputOF").value;
 	toWhat = document.getElementById("inputTO").value;
@@ -163,9 +149,9 @@ function lsystem()
 		q = 22.5;
 	if (axiom == "")
 		axiom = "F";
-	if (ofWhat == "")
+	if (ofWhat == "" || ofWhat.length > 1)
 		ofWhat = "F";
 	if (toWhat == "")
 		toWhat = "-F+F+[+F-F-]-[-F+F+F]";
-	Print(Transform(axiom, ofWhat, toWhat, n), xO, yO, s, q);
+	print(transform(axiom, ofWhat, toWhat, n), xO, yO, s, q);
 }
