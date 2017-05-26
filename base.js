@@ -75,7 +75,8 @@ var print = function (str, x, y, s, q)
 	context.restore();
 }
 
-function run() {
+function run()
+{
 	print(transform("[F]+[F]+[F]+[F]+[F]+[F]", "F", "F[+FF][-FF]FF[+F][-F]FF", 4), 1000, 1000, 1, 60);
 }
 
