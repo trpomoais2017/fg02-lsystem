@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+	<head>
+	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="Cache-Control" content="no-cache"/>
+		<title>L system</title>
+		<script src="script.js"></script>
+	</head>
+	<body onload="load()">
+		<canvas height='550' width='1200' id='mCanvas'></canvas></br>
+		<output>Axiom: </output>
+		<input type="text" value="F" id="axiomField"></br>
+		<output>Rule: </output>
+		<input type="text" value="-F+F+[+F-F-]-[-F+F+F]" id="ruleField"></br>
+		<output>Delta angle: Math.PI / </output>
+		<input type="number" min="1" max="1000" value="8" id="angleField"></br>
+		<output>Iterations: </output>
+		<input type="number" min="0" max="6" value="0" id="iterationsField"></br>
+		<input type="button"  value="Generate" onclick="generate()">
+	</body>
+</html>
